@@ -48,7 +48,7 @@ $cards = "";
 if (mysqli_num_rows($resultAnimals) > 0) {
     while ($animalRow = mysqli_fetch_assoc($resultAnimals)) {
         $cards .= "<div class='col-lg-4 col-md-6 col-sm-12 mb-3'>
-            <div class='card mt-5' style='width: 320px;'>
+            <div class='card mt-2' style='width: 320px;'>
                 <img src='pictures/{$animalRow["image"]}' class='card-img-top' alt='...' style='height: 440px; object-fit: cover;'>
                 <div class='card-body'>
                     <h4 class='card-title'>{$animalRow["name"]}</h4>
@@ -121,7 +121,6 @@ mysqli_close($connect);
     <div class="container">
         <div class="d-flex justify-content-between align-items-center my-4">
             <div>
-                <a class="btn btn-secondary btn-lg" href="create.php">Add a new animal</a>
                 <a class="btn btn-secondary btn-lg" href="register.php">Add a new user</a>
             </div>
             <h2 class="text-center my-4 mx-4"><strong>Welcome <?= $row["first_name"] . " " . $row["last_name"] ?></strong></h2>
@@ -134,7 +133,13 @@ mysqli_close($connect);
         </div>
     </div>
     <hr class="hr-custom">
+
     <div class="container">
+        <div class="d-flex justify-content-between align-items-center my-5">
+            <div>
+                <a class="btn btn-secondary btn-lg" href="create.php">Add a new pet</a>
+            </div>
+        </div>
         <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-xs-1">
             <?= $cards ?>
         </div>
