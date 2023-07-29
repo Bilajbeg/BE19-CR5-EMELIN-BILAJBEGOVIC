@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2023 at 02:49 PM
+-- Generation Time: Jul 29, 2023 at 08:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,15 +50,16 @@ CREATE TABLE `animal` (
 INSERT INTO `animal` (`id`, `name`, `image`, `location`, `description`, `size`, `age`, `vaccinated`, `breed`, `status`, `fk_animalId`) VALUES
 (1, 'Kitty', 'cat.jpg', 'Testtraße 10, Vienna', 'Very nice young cat from a non smoke home.burrower, agile, whiskers, cute, lovely,...', 'small', 1, 1, 'cat', 1, NULL),
 (2, 'Mike', 'dog.jpg', 'Testtraße 10, Linz', 'A very cute young dog which loves children and is always happy,burrower,cute,small,...', 'small', 2, 1, 'dog', 1, NULL),
-(3, 'Greeny', '64c3dd0c2f2be.jpg', 'Venezien, Italien', 'A beautiful snake from Amazon area. Likes to eat mouses and insects. Not dangerouse , likes to play', 'medium', 4, 0, 'reptile', 0, NULL),
-(4, 'Alex', '64c3ddc0156c1.jpg', 'Sidney, Australia', 'Cute, marsupial, eucalyptus, tree-dwelling, sleepy, herbivore, Australia, pouch, fuzzy, iconic.', 'big', 9, 1, 'marsupial', 1, NULL),
+(3, 'Greeny', 'snake.jpg', 'Venezien, Italien', 'A beautiful snake from Amazon area. Likes to eat mouses and insects. Not dangerouse , likes to play', 'medium', 4, 0, 'reptile', 0, NULL),
+(4, 'Alex', 'koala.jpg', 'Sidney, Australia', 'Cute, marsupial, eucalyptus, tree-dwelling, sleepy, herbivore, Australia, pouch, fuzzy, iconic.', 'big', 9, 1, 'marsupial', 1, NULL),
 (5, 'Arabian Lightning', 'horse.jpg', 'Amman, Jordanian', 'Elegant, swift, Arabian Peninsula, endurance, majestic, intelligent, distinctive, prized, loyal, graceful.', 'big', 12, 1, 'horse', 0, NULL),
 (7, 'Nemo', 'clownfish.jpg', 'Roma, Italia', 'Vibrant, coral-dwelling, clownfish, Red Sea, striped, small, symbiotic, playful, marine, colorful.', 'small', 3, 0, 'seafish', 1, NULL),
 (9, 'Mishko', 'hamster.jpg', 'München, Germany', 'Small, furry, nocturnal, rodent, cute, active, burrower, agile, whiskers, gentle, lovely.', 'small', 2, 1, 'hamster', 0, NULL),
 (10, 'Felix', 'rabbit.jpg', 'Innsbruck, Austria', 'Furry, herbivorous, hopping, cute, social, burrower, gentle, floppy ears, whiskers, active.', 'small', 3, 1, 'rabbit', 0, NULL),
 (24, 'Jim', 'donkey.jpg', 'Greece', 'Hardy, sure-footed, gentle, hardworking, patient, friendly, herbivorous, braying, resilient, iconic.', 'big', 13, 1, 'donkey', 1, NULL),
 (25, 'Trump', 'turtle.jpg', 'Testtraße 10, Berlin, Germany', 'Shell, reptile, slow-moving, aquatic, ancient, patient, herbivorous, protective, cold-blooded, long-lived.', 'small', 9, 0, 'sea turtle', 1, NULL),
-(28, 'Jumbo', '64c506a221a47.jpg', 'Ghambia, Arfica', 'This is an animal which needs a lot space and can only be given to adoptation if you have a big garden :)', 'big', 24, 1, 'elefant', 1, NULL);
+(28, 'Jumbo', 'elefant.jpg', 'Ghambia, Arfica', 'This is an animal which needs a lot space and can only be given to adoptation if you have a big garden :)', 'big', 24, 1, 'elefant', 1, NULL),
+(29, 'Avatar', 'avatar.jpg', 'test 1', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam', 'small', 1, 0, 'avatar', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -125,10 +126,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `address`, `picture`, `password`, `status`) VALUES
 (3, 'Emelin', 'Bilajbeg', 'bilajbeg@gmail.com', 660610549, 'Karajangasse 11', 'emelin.jpg', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'adm'),
-(4, 'Murat', 'Arslan', 'murat@gmail.com', 19740510, 'Praterstraße 12', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
-(5, 'Hassan', 'Bosni', 'hassan@gmail.com', 660225588, 'Landstraße 56', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
-(7, 'Sabahuddin', 'Albani', 'sabahuddin@gmail.com', 355123456, 'Albanian Street, Tirana', '64c4344c2d9b0.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
-(8, 'Erol', 'Turki', 'erol@gmail.com', 123456, 'Mariahilferstraße 5', '64c4e7a3e957c.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user');
+(4, 'Murat', 'Arslan', 'murat@gmail.com', 19740510, 'Praterstraße 12', 'man_2.jpg', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(9, 'Erol', 'Turki', 'erol@gmail.com', 123456, 'Münzgasse 5', 'man_1.jpg', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(12, 'Sebastian', 'Green', 'sebastian@gmail.com', 1225566, 'Glasgasse 7', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user');
 
 --
 -- Indexes for dumped tables
@@ -169,7 +169,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `animal`
 --
 ALTER TABLE `animal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `pet_adoption`
@@ -187,7 +187,7 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
