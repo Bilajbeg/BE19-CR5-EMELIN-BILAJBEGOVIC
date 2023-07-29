@@ -33,34 +33,44 @@ if (isset($_POST["create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Create</title>
+    <title>Add new animal</title>
+    <style>
+        body {
+            background-image: url('pictures/erol_ahmed.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .container {
+            width: 800px;
+        }
+    </style>
+
+
 </head>
 
-<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
+<body class="bg-success text-dark bg-opacity-50" style="height: 100vh">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php" style="font-size: 20px;">Home</a>
-                    </li>
-                    <!-- Add more menu items below -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://codefactory.wien/en/contact-en/" style="font-size: 20px;" target="_blank">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://codefactory.wien/en/team-en/" style="font-size: 20px;" target="_blank">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://codefactory.wien/en/home-en/" style="font-size: 20px;" target="_blank">Impressium</a>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="#">
+                <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="senior.php">Seniors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php?logout">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -71,51 +81,56 @@ if (isset($_POST["create"])) {
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="location" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="location" name="location">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="location" name="location">
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image upload</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                            </div>
+                            <div class="mb-3">
+                                <label for="size" class="form-label">Size</label>
+                                <input type="text" class="form-control" id="size" name="size">
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="text" class="form-control" id="age" name="age">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="vaccinated" class="form-label">Vaccinated</label>
+                                <input type="text" class="form-control" id="vaccinated" name="vaccinated">
+                            </div>
+                            <div class="mb-3">
+                                <label for="breed" class="form-label">Breed</label>
+                                <input type="text" class="form-control" id="breed" name="breed">
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <select class="form-control" id="status" name="status" value="<?= $row["status"] ?>">
+                                    <option value="0">Adopted</option>
+                                    <option value="1">Available</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="6"></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Image upload</label>
-                        <input type="file" class="form-control" id="image" name="image">
-                    </div>
-                    <div class="mb-3">
-                        <label for="size" class="form-label">Size</label>
-                        <input type="text" class="form-control" id="size" name="size">
-                    </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label">Age</label>
-                        <input type="text" class="form-control" id="age" name="age">
-                    </div>
-                    <div class="mb-3">
-                        <label for="vaccinated" class="form-label">Vaccinated</label>
-                        <input type="text" class="form-control" id="vaccinated" name="vaccinated">
-                    </div>
-                    <div class="mb-3">
-                        <label for="breed" class="form-label">Breed</label>
-                        <input type="text" class="form-control" id="breed" name="breed">
-                    </div>
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-control" id="status" name="status" value="<?= $row["status"] ?>">
-                            <option value="0">Adopted</option>
-                            <option value="1">Available</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="6"></textarea>
-                    </div>
 
-
-                    <button type="submit" name="create" class="btn btn-success btn-lg">Create</button>
-                    <a href='dashboard.php' class='btn btn-primary btn-lg' style='width: auto;'>Dashboard</a>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" name="create" class="btn btn-success btn-lg">Create</button>
+                        <a href='dashboard.php' class='btn btn-primary btn-lg ms-2'>Dashboard</a>
+                    </div>
                 </form>
             </div>
         </div>

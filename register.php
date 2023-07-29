@@ -107,7 +107,7 @@ if (isset($_POST["sign-up"])) {
     <title>Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
-        body {  
+        body {
             background-image: url('pictures/erol_ahmed.jpg');
             /* Replace 'pictures/erol_ahmed.jpg' with the actual path to your background image */
             background-size: cover;
@@ -192,14 +192,15 @@ if (isset($_POST["sign-up"])) {
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
                 <span class="text-danger"><?= $emailError ?></span>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
                 <span class="text-danger"><?= $passError ?></span>
             </div>
-            <button name="sign-up" type="submit" class="btn btn-primary mb-2">Create Account</button>
-
-            <span>Already have an account? <a href="login.php">Sign in here</a></span>
+            <button name="sign-up" type="submit" class="btn btn-primary mb-3">Create Account</button>
+            <div class="pb-3">
+                <span>Already have an account? <a href="login.php">Sign in here</a></span>
+            </div>
         </form>
     </div>
 

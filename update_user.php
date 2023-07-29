@@ -4,32 +4,28 @@ require_once "upload.php";
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM animal WHERE id = $id ";
+$sql = "SELECT * FROM users WHERE id = $id ";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
-if (isset($_POST["update"])) {
-    $name = $_POST["name"];
-    $image = upload_user($_FILES["picture"]);
-    $location = str_replace("'", "&#39;", $_POST["location"]);
-    $description = str_replace("'", "&#39;", $_POST["description"]);
-    $size = $_POST["size"];
-    $age = $_POST["age"];
-    $vaccinated = $_POST["vaccinated"];
-    $breed = $_POST["breed"];
-    $status = $_POST["status"];
+if (isset($_POST["update_user"])) {
+    $first_name = $_POST["first_name"];
+    $last_name = $_POST["last_name"];
+    $picture = upload($_FILES["picture"]);
+    $phone_number = $_POST["phone_number"];
+    $address = $_POST["address"];
 
-    if ($_FILES["image"]["error"] === 4) {
-        $sql = "UPDATE animal SET name='$name', location='$location', description='$description', size='$size', age='$age', vaccinated='$vaccinated', breed='$breed', status='$status' WHERE id=$id";
+    if ($_FILES["picture"]["error"] === 4) {
+        $sql = "UPDATE users SET first_name='$first_name', last_name='$last_name', phone_number='$phone_number', address='$address' WHERE id=$id";
     } else {
-        $sql = "UPDATE animal SET name='$name', image='$image[0]', location='$location', description='$description', size='$size', age='$age', vaccinated='$vaccinated', breed='$breed', status='$status' WHERE id=$id";
+        $sql = "UPDATE users SET first_name='$first_name', last_name='$last_name', picture='$picture[0]', phone_number='$phone_number', address='$address' WHERE id=$id";
     }
 
     if (mysqli_query($connect, $sql)) {
-        echo "Success";
-        header("refresh: 3; url = index.php");
+        echo "<span class='text_1'>Success</span>";
+        header("refresh: 3; url = dashboard.php");
     } else {
-        echo "Error";
+        echo "<span class='text_1'>Error</span>";
     }
 }
 ?>
@@ -42,10 +38,34 @@ if (isset($_POST["update"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Update</title>
+    <title>Update Users</title>
+    <style>
+        body {
+            background-image: url('pictures/erol_ahmed.jpg');
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .container {
+            width: 700px;
+        }
+
+        .text-success {
+            color: yellow;
+        }
+
+        .text_1 {
+            color: yellow;
+            font-size: 26px;
+            font-weight: bold;
+        }
+    </style>
+
+
 </head>
 
-<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
+<body class="bg-success text-dark bg-opacity-50" style="height: 100vh">
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
@@ -75,55 +95,34 @@ if (isset($_POST["update"])) {
     <div class="container mt-5">
         <div class="card shadow-lg">
             <div class="card-header bg-primary text-white">
-                <h4 class="m-0">Update the animal data</h4>
+                <h4 class="m-0">Update the user data</h4>
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="<?= $row["name"] ?>">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="<?= $row["first_name"] ?>">
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <label for="location" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="location" name="location" value="<?= $row["location"] ?>">
+                            <label for="last_name" class="form-label">Last Name/label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="<?= $row["last_name"] ?>">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">Image URL</label>
-                        <input type="file" class="form-control" id="image" name="image" value="<?= $row["image"] ?>">
+                        <label for="picture" class="form-label">Picture Upload</label>
+                        <input type="file" class="form-control" id="picture" name="picture" value="<?= $row["picture"] ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="size" class="form-label">Size</label>
-                        <input type="text" class="form-control" id="size" name="size" value="<?= $row["size"] ?>">
+                        <label for="size" class="form-label">Phone number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?= $row["phone_number"] ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="age" class="form-label">Age</label>
-                        <input type="text" class="form-control" id="age" name="age" value="<?= $row["age"] ?>">
+                        <label for="age" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" value="<?= $row["address"] ?>">
                     </div>
-                    <div class="mb-3">
-                        <label for="vaccinated" class="form-label">Vaccinated</label>
-                        <input type="text" class="form-control" id="vaccinated" name="vaccinated" value="<?= $row["vaccinated"] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="breed" class="form-label">Breed</label>
-                        <input type="text" class="form-control" id="breed" name="breed" value="<?= $row["breed"] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-control" id="status" name="status" value="<?= $row["status"] ?>">
-                            <option value="0">Adopted</option>
-                            <option value="1">Available</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="6"><?= $row["description"] ?></textarea>
-                    </div>
-
-
-                    <button type="submit" name="update" class="btn btn-success btn-lg">Update</button>
-                    <a href='index.php' class='btn btn-primary btn-lg' style='width: auto;'>HOME PAGE</a>
+                    <button type="submit" name="update_user" class="btn btn-success btn-lg">Update</button>
+                    <a href='dashboard.php' class='btn btn-primary btn-lg' style='width: auto;'>Dashboard</a>
                 </form>
             </div>
         </div>

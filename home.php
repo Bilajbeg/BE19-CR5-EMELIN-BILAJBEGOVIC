@@ -24,6 +24,9 @@ $cards = "";
 
 if (mysqli_num_rows($resultProducts) > 0) {
     while ($rowProduct = mysqli_fetch_assoc($resultProducts)) {
+        $adoptionStatus = ($rowProduct["status"] == 1) ? "Available" : "Adopted";
+        $buttonText = ($rowProduct["status"] == 1) ? "Take me home" : "Adopted";
+
         $cards .= "<div class='col-lg-4 col-md-6 col-sm-12 mb-3'>
             <div class='card' style='width: 320px;'>
                 <img src='pictures/{$rowProduct["image"]}' class='card-img-top' alt='...' style='height: 440px; object-fit: cover;'>
@@ -33,7 +36,14 @@ if (mysqli_num_rows($resultProducts) > 0) {
                     <p class='card-text'>Age: {$rowProduct["age"]}</p> 
                     <p>Size: <a href='sizes.php?size={$rowProduct["size"]}'>{$rowProduct["size"]}</a></p>
                     <p class='card-text'>Description: <br>{$rowProduct["description"]}</p> 
-                    <a href='details.php?id={$rowProduct["id"]}' class='btn btn-warning'>Details</a>
+                    <p class='card-text'>Status: {$adoptionStatus}</p>
+                    <div class='d-flex justify-content-between'>
+                        <form method='post'>
+                            <input type='hidden' name='animal_id' value='{$rowProduct["id"]}'>
+                            <button type='submit' name='adopt' class='btn btn-primary'>{$buttonText}</button>
+                        </form>
+                        <a href='details.php?id={$rowProduct["id"]}' class='btn btn-warning'>Details</a>
+                    </div>
                 </div>
             </div>
         </div>";
@@ -53,10 +63,21 @@ mysqli_close($connect);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome <?= $row["first_name"] ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('pictures/bg_3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .white-text {
+            color: white;
+        }
+    </style>
 
 </head>
 
-<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
+<body class="bg-success text-dark">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -80,7 +101,7 @@ mysqli_close($connect);
         </div>
     </nav>
 
-    <h2 class="text-center my-5">Welcome <?= $row["first_name"] . " " . $row["last_name"] ?></h2>
+    <h2 class="text-center my-5 white-text"><strong>Welcome <?= $row["first_name"] . " " . $row["last_name"] ?></strong></h2>
 
     <div class="container">
         <div class="row">

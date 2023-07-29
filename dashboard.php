@@ -30,7 +30,7 @@ if (mysqli_num_rows($resultUsers) > 0) {
                 <div class='card-body'>
                     <h5 class='card-title'>{$userRow["first_name"]} {$userRow["last_name"]}</h5>
                     <p class='card-text'>{$userRow["email"]}</p>
-                    <a href='update.php?id={$userRow["id"]}' class='btn btn-warning'>Update</a>
+                    <a href='update_user.php?id={$userRow["id"]}' class='btn btn-warning'>Update</a>
                     <a href='delete.php?id={$userRow["id"]}' class='btn btn-danger'>Delete</a>
                 </div>
             </div>
@@ -80,14 +80,9 @@ mysqli_close($connect);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <style>
-        .bg-gray {
-            background-color: gray;
-        }
-
         .hr-custom {
             width: 80%;
             border: 3px solid #000;
-            /* Change this value to set the desired border size */
             margin: 0 auto;
         }
     </style>
@@ -144,7 +139,7 @@ mysqli_close($connect);
         </div>
     </div>
 
-    <footer class="navbar navbar-expand-lg bg-gray fixed-bottom">
+    <footer class="navbar navbar-expand-lg bg-body-tertiary fixed-bottom">
         <div class="container-fluid d-flex justify-content-center">
             <div class="text-center p-3" style="font-size: 18px;">
                 <strong>© 2023 Copyright: Emelin Bilajbegovic</strong>
