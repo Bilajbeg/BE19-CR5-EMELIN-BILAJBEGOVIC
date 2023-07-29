@@ -18,6 +18,8 @@ if (mysqli_num_rows($result) > 0) {
 
         $statusText = ($row["status"] > 0) ? "Available" : "Adopted";
 
+        $buttonText = ($row["status"] > 0) ? "Take Me Home" : "Adopted";
+
         $cards .= "<div style='min-width: 500px; max-width: 700px;'>
             <div class='card border-3'>
                 <img src='pictures/{$row["image"]}' class='card-img-top mx-3 mt-2' style='width: 200px; height: 250px; object-fit: cover;'>
@@ -31,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
                     <p class='card-text'> <strong>Size:</strong> <a href='sizes.php?size={$row["size"]}'>{$row["size"]}</a></p>
                     <p class='card-text style'><strong>Description: </strong><br> {$row["description"]}</p>
                     <p class='card-text'><strong>Status: </strong>{$statusText}</p>
-                    <a href='home.php' class='btn btn-primary my-2' style='width: auto;'>Take Me Home</a>
+                    <a href='home.php' class='btn btn-primary my-2' style='width: auto;'>{$buttonText}</a>
                 </div>
             </div>
         </div>";
@@ -40,6 +42,7 @@ if (mysqli_num_rows($result) > 0) {
     $cards .= "<p>No Content</p>";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
