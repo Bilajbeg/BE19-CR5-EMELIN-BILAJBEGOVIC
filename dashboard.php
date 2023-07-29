@@ -26,7 +26,7 @@ if (mysqli_num_rows($resultUsers) > 0) {
     while ($userRow = mysqli_fetch_assoc($resultUsers)) {
         $layout .= "<div>
             <div class='card mb-5' style='width: 18rem;'>
-                <img src='pictures/{$userRow["picture"]}' class='card-img-top' alt='...'>
+                <img src='pictures/{$userRow["picture"]}' class='card-img-top' alt='...' style='height: 300px; object-fit: cover;'>
                 <div class='card-body'>
                     <h5 class='card-title'>{$userRow["first_name"]} {$userRow["last_name"]}</h5>
                     <p class='card-text'>{$userRow["email"]}</p>
@@ -94,6 +94,7 @@ mysqli_close($connect);
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+                <?= $row["email"] ?>
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
                 <li class="nav-item">

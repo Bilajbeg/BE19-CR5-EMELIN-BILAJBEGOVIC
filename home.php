@@ -106,7 +106,8 @@ mysqli_close($connect);
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+                <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="40" height="30">
+                <?= $row["email"] ?> <!-- Add the user's email next to the picture -->
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
                 <li class="nav-item">

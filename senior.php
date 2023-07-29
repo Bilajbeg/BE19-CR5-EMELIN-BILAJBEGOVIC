@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once "db_connect.php";
 
 $sql = "SELECT * FROM `animal` WHERE `age` > 8 ";
@@ -29,6 +31,13 @@ if (mysqli_num_rows($result) > 0) {
     $cards = "<p>No results found</p>";
 }
 
+// Fetch the admin's data if available
+$adminRow = null;
+if (isset($_SESSION["adm"]) && $_SESSION["adm"] != null) {
+    $sqlAdmin = "SELECT * FROM users WHERE id = {$_SESSION["adm"]}";
+    $resultAdmin = mysqli_query($connect, $sqlAdmin);
+    $adminRow = mysqli_fetch_assoc($resultAdmin);
+}
 
 mysqli_close($connect);
 ?>
@@ -45,7 +54,12 @@ mysqli_close($connect);
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+                <?php if ($adminRow) : ?>
+                    <img src="pictures/<?= $adminRow["picture"] ?>" alt="user pic" width="30" height="24">
+                    <?= $adminRow["email"] ?>
+                <?php else : ?>
+                    Junior Page
+                <?php endif; ?>
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
                 <li class="nav-item">
@@ -57,7 +71,6 @@ mysqli_close($connect);
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php?logout">Logout</a>
                 </li>

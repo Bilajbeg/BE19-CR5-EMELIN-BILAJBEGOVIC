@@ -1,5 +1,13 @@
 <?php
+session_start();
+
 require_once "db_connect.php";
+
+// Check if the user is logged in, otherwise redirect to login page
+if (!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {
+    header("Location: login.php");
+    exit();
+}
 
 $sql = "SELECT * FROM `animal` WHERE `age` < 3 ";
 
@@ -17,10 +25,19 @@ if (mysqli_num_rows($result) > 0) {
                     <p class='card-text'>Location: {$row["location"]}</p> 
                     <p class='card-text'>Age: {$row["age"]}</p> 
                     <p>Size: <a href='sizes.php?size={$row["size"]}'>{$row["size"]}</a></p>
-                    <p class='card-text'>Description: <br>{$row["description"]}</p> 
-                    <a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
-                    <a href='home.php' class='btn btn-primary my-2' style='width: auto;'>Back</a>
-                </div>
+                    <p class='card-text'>Description: <br>{$row["description"]}</p>";
+
+        // Check if an admin is logged in to display their picture and email
+        if (isset($_SESSION["adm"])) {
+            $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
+                <a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
+                <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>";
+        } else {
+            // Regular user, hide edit and delete buttons
+            $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>";
+        }
+
+        $cards .= "</div>
             </div>
         </div>";
     }
@@ -28,6 +45,13 @@ if (mysqli_num_rows($result) > 0) {
     $cards = "<p>No results found</p>";
 }
 
+// Fetch the admin's data if available
+$adminRow = null;
+if (isset($_SESSION["adm"])) {
+    $sqlAdmin = "SELECT * FROM users WHERE id = {$_SESSION["adm"]}";
+    $resultAdmin = mysqli_query($connect, $sqlAdmin);
+    $adminRow = mysqli_fetch_assoc($resultAdmin);
+}
 
 mysqli_close($connect);
 ?>
@@ -44,7 +68,12 @@ mysqli_close($connect);
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+                <?php if ($adminRow) : ?>
+                    <img src="pictures/<?= $adminRow["picture"] ?>" alt="user pic" width="30" height="24">
+                    <?= $adminRow["email"] ?>
+                <?php else : ?>
+                    Junior Page
+                <?php endif; ?>
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
                 <li class="nav-item">
@@ -56,7 +85,6 @@ mysqli_close($connect);
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php?logout">Logout</a>
                 </li>
