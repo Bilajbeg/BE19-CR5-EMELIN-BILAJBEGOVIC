@@ -104,8 +104,47 @@ if (isset($_POST["sign-up"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up </title>
+    <title>Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {  
+            background-image: url('pictures/erol_ahmed.jpg');
+            /* Replace 'pictures/erol_ahmed.jpg' with the actual path to your background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding-top: 50px;
+            background-color: rgba(255, 192, 203, 0.8);
+            /* Rose color with opacity */
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -129,26 +168,27 @@ if (isset($_POST["sign-up"])) {
         </div>
     </nav>
     <!--NAVBAR END-->
-    <div class="container">
-        <h1 class="text-center">Sign Up </h1>
+
+    <div class="container my-5">
+        <h1 class="text-center">Sign Up</h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
-                <label for="fname" class="form-label">First name </label>
+                <label for="fname" class="form-label">First name</label>
                 <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" value="<?= $fname ?>">
                 <span class="text-danger"><?= $fnameError ?></span>
             </div>
             <div class="mb-3">
-                <label for="lname" class="form-label">Last name </label>
+                <label for="lname" class="form-label">Last name</label>
                 <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" value="<?= $lname ?>" required>
                 <span class="text-danger"><?= $lnameError ?></span>
             </div>
 
             <div class="mb-3">
-                <label for="picture" class="form-label">Profile picture </label>
+                <label for="picture" class="form-label">Profile picture</label>
                 <input type="file" class="form-control" id="picture" name="picture">
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Email address </label>
+                <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
                 <span class="text-danger"><?= $emailError ?></span>
             </div>
@@ -157,9 +197,9 @@ if (isset($_POST["sign-up"])) {
                 <input type="password" class="form-control" id="password" name="password">
                 <span class="text-danger"><?= $passError ?></span>
             </div>
-            <button name="sign-up" type="submit" class="btn btn-primary">Create account </button>
+            <button name="sign-up" type="submit" class="btn btn-primary mb-2">Create Account</button>
 
-            <span>you have an account already? <a href="login.php">sign in here </a></span>
+            <span>Already have an account? <a href="login.php">Sign in here</a></span>
         </form>
     </div>
 
