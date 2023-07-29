@@ -1,7 +1,14 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["user"])) {
+    // Redirect to the login page or handle the situation when the user is not logged in
+    header("Location: login.php");
+    exit; // Make sure to exit after redirection
+}
+
 require_once "db_connect.php";
+
 
 // Check if the user is logged in, otherwise redirect to login page
 if (!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {

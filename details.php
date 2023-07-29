@@ -1,5 +1,20 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION["user"])) {
+    // Redirect to the login page or handle the situation when the user is not logged in
+    header("Location: login.php");
+    exit; // Make sure to exit after redirection
+}
+
 require_once "db_connect.php";
+
+
+// Fetch user details
+$userSql = "SELECT * FROM users WHERE id = {$_SESSION["user"]}";
+$userResult = mysqli_query($connect, $userSql);
+$userRow = mysqli_fetch_assoc($userResult);
 
 $id = $_GET["id"];
 
@@ -75,7 +90,8 @@ if (mysqli_num_rows($result) > 0) {
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+                <img src="pictures/<?= $userRow["picture"] ?>" alt="user pic" width="30" height="24">
+                <?= $userRow["email"] ?>
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
                 <li class="nav-item">
