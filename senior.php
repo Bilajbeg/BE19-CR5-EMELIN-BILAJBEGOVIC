@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
             $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>";
 
             // Show the "Edit" and "Delete" buttons for the admin
-            $cards .= "<a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
+            $cards .= "<a href='update.php?id={$row["id"]}' class='btn btn-success mx-2'>Edit</a>
                 <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>";
         } else {
             // Regular user, hide edit and delete buttons
@@ -68,7 +68,7 @@ mysqli_close($connect);
                     <img src="pictures/<?= $adminRow["picture"] ?>" alt="user pic" width="30" height="24">
                     <?= $adminRow["email"] ?>
                 <?php else : ?>
-                    Junior Page
+                    Senior Page
                 <?php endif; ?>
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">

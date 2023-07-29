@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) > 0) {
         // Check if an admin is logged in to display their picture and email
         if (isset($_SESSION["adm"])) {
             $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
-                <a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
+                <a href='update.php?id={$row["id"]}' class='btn btn-success mx-2'>Edit</a>
                 <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>";
         } else {
             // Regular user, hide edit and delete buttons
