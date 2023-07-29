@@ -34,7 +34,8 @@ if (mysqli_num_rows($result) > 0) {
                 <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>";
         } else {
             // Regular user, hide edit and delete buttons
-            $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>";
+            $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
+            <a href='home.php' class='btn btn-secondary my-2' style='width: auto;'>Back</a>";
         }
 
         $cards .= "</div>
