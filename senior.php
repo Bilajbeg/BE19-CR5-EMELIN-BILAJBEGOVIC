@@ -19,11 +19,21 @@ if (mysqli_num_rows($result) > 0) {
                     <p class='card-text'>Location: {$row["location"]}</p> 
                     <p class='card-text'>Age: {$row["age"]}</p> 
                     <p>Size: <a href='sizes.php?size={$row["size"]}'>{$row["size"]}</a></p>
-                    <p class='card-text'>Description: <br>{$row["description"]}</p> 
-                    <a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
-                    <a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
-                    <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>
-                </div>
+                    <p class='card-text'>Description: <br>{$row["description"]}</p>";
+
+        // Check if an admin is logged in to display their picture and email
+        if (isset($_SESSION["adm"])) {
+            $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>";
+
+            // Show the "Edit" and "Delete" buttons for the admin
+            $cards .= "<a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
+                <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>";
+        } else {
+            // Regular user, hide edit and delete buttons
+            $cards .= "<a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>";
+        }
+
+        $cards .= "</div>
             </div>
         </div>";
     }
