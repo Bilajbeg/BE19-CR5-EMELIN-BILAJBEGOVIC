@@ -21,10 +21,10 @@ if (isset($_POST["create"])) {
     $sql = "INSERT INTO `animal` ( `name`, `image`, `location`, `description`, `size`, `age`, `vaccinated`, `breed`, `status`) VALUES ('$name', '$image[0]', '$location', '$description', '$size', '$age','$vaccinated', '$breed','$status')";
 
     if (mysqli_query($connect, $sql)) {
-        echo "Success";
-        header("refresh: 3; url = dashboard.php");
+        echo "<span class='text_1'>Success</span>";
+        header("refresh: 3; url = home.php");
     } else {
-        echo "Error";
+        echo "<span class='text_1'>Error</span>";
     }
 }
 ?>
@@ -44,6 +44,11 @@ if (isset($_POST["create"])) {
             background-position: center;
         }
 
+        .text_1 {
+            color: yellow;
+            font-size: 26px;
+            font-weight: bold;
+        }
 
         .container {
             width: 800px;
@@ -110,7 +115,10 @@ if (isset($_POST["create"])) {
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="vaccinated" class="form-label">Vaccinated</label>
-                                <input type="text" class="form-control" id="vaccinated" name="vaccinated">
+                                <select class="form-control" id="vaccinated" name="vaccinated" value="<?= $row["vaccinated"] ?>">
+                                    <option value="0">NO</option>
+                                    <option value="1">YES</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="breed" class="form-label">Breed</label>
