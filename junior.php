@@ -103,7 +103,7 @@ mysqli_close($connect);
         </div>
     </div>
 
-    <footer class="navbar navbar-expand-lg bg-body-tertiary fixed-bottom">
+    <footer class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid d-flex justify-content-center">
             <div class="text-center p-3" style="font-size: 18px;">
                 <strong>© 2023 Copyright: Emelin Bilajbegovic</strong>
