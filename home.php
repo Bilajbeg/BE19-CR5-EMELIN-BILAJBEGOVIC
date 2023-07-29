@@ -11,6 +11,31 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {
 
 require_once "db_connect.php";
 
+// Function to handle pet adoption
+function adoptPet($connect, $userId, $animalId)
+{
+    // Update the status of the pet to 'Adopted' (status = 0)
+    $updateStatusSql = "UPDATE animal SET status = 0 WHERE id = $animalId";
+    mysqli_query($connect, $updateStatusSql);
+
+    // Insert a new record in the pet_adoption table
+    $adoptionDate = date("Y-m-d"); // Get the current date
+
+    $insertAdoptionSql = "INSERT INTO pet_adoption (user_id, pet_id, adoption_date) VALUES ($userId, $animalId, '$adoptionDate')";
+    mysqli_query($connect, $insertAdoptionSql);
+}
+
+// Handle the form submission for pet adoption
+if (isset($_POST['adopt'])) {
+    $animalId = $_POST['animal_id'];
+    $userId = $_SESSION["user"];
+
+    adoptPet($connect, $userId, $animalId);
+
+    // Refresh the page to reflect the updated status
+    header("Location: home.php");
+}
+
 $sql = "SELECT * FROM users WHERE id = {$_SESSION["user"]}";
 
 $result = mysqli_query($connect, $sql);
