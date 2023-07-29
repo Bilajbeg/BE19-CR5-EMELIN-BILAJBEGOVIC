@@ -33,7 +33,10 @@ if (mysqli_num_rows($result) > 0) {
                     <p class='card-text'> <strong>Size:</strong> <a href='sizes.php?size={$row["size"]}'>{$row["size"]}</a></p>
                     <p class='card-text style'><strong>Description: </strong><br> {$row["description"]}</p>
                     <p class='card-text'><strong>Status: </strong>{$statusText}</p>
+                    <div>
                     <a href='home.php' class='btn btn-primary my-2' style='width: auto;'>{$buttonText}</a>
+                    <a href='home.php' class='btn btn-secondary my-2' style='width: auto;'>Back</a>
+                    </div>
                 </div>
             </div>
         </div>";
