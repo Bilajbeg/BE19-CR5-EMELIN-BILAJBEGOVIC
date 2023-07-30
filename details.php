@@ -1,41 +1,37 @@
 <?php
-
 session_start();
-
-if (!isset($_SESSION["user"])) {
-    // Redirect to the login page or handle the situation when the user is not logged in
-    header("Location: login.php");
-    exit; // Make sure to exit after redirection
-}
-
 require_once "db_connect.php";
 
+// Check if 'user' or 'adm' session is set
+if (isset($_SESSION["user"]) || isset($_SESSION["adm"])) {
+    // Use the appropriate session variable to fetch user details
+    $userId = isset($_SESSION["user"]) ? $_SESSION["user"] : $_SESSION["adm"];
 
-// Fetch user details
-$userSql = "SELECT * FROM users WHERE id = {$_SESSION["user"]}";
-$userResult = mysqli_query($connect, $userSql);
-$userRow = mysqli_fetch_assoc($userResult);
+    // Fetch user details
+    $userSql = "SELECT * FROM users WHERE id = $userId";
+    $userResult = mysqli_query($connect, $userSql);
+    $userRow = mysqli_fetch_assoc($userResult);
 
-$id = $_GET["id"];
+    $id = $_GET["id"];
 
-$sql = "SELECT * FROM animal WHERE id_pet = $id ";
-$result = mysqli_query($connect, $sql);
+    $sql = "SELECT * FROM animal WHERE id_pet = $id ";
+    $result = mysqli_query($connect, $sql);
 
-$cards = "";
+    $cards = "";
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        if ($row["vaccinated"] == 1) {
-            $vaccinatedStatus = "YES";
-        } else {
-            $vaccinatedStatus = "NO";
-        }
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            if ($row["vaccinated"] == 1) {
+                $vaccinatedStatus = "YES";
+            } else {
+                $vaccinatedStatus = "NO";
+            }
 
-        $statusText = ($row["status"] > 0) ? "Available" : "Adopted";
+            $statusText = ($row["status"] > 0) ? "Available" : "Adopted";
 
-        $buttonText = ($row["status"] > 0) ? "Take Me Home" : "Adopted";
+            $buttonText = ($row["status"] > 0) ? "Take Me Home" : "Adopted";
 
-        $cards .= "<div style='min-width: 500px; max-width: 700px;'>
+            $cards .= "<div style='min-width: 500px; max-width: 700px;'>
             <div class='card border-3'>
                 <img src='pictures/{$row["image"]}' class='card-img-top mx-3 mt-2' style='width: 200px; height: 250px; object-fit: cover;'>
                 <div class='card-body shadow bg-body-tertiary rounded'>
@@ -55,9 +51,11 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
         </div>";
+        }
+    } else {
+        header("Location: login.php");
+        $cards .= "<p>No Content</p>";
     }
-} else {
-    $cards .= "<p>No Content</p>";
 }
 ?>
 

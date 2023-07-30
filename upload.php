@@ -1,5 +1,5 @@
 <?php
-function upload_user($picture)
+/* function upload_user($picture)
 {
     if ($picture["error"] == 4) {
         $pictureName = "avatar.png";
@@ -18,7 +18,7 @@ function upload_user($picture)
         $message = "The file that you selected is not an image, you can upload it later";
     }
     return [$pictureName, $message];
-};
+}; */
 
 function upload($image)
 {

@@ -48,6 +48,14 @@ if (mysqli_num_rows($result) > 0) {
     $cards = "<p>No results found</p>";
 }
 
+// Fetch the user's data if available
+$userRow = null;
+if (isset($_SESSION["user"]) && $_SESSION["user"] != null) {
+    $sqlUser = "SELECT * FROM users WHERE id = {$_SESSION["user"]}";
+    $resultUser = mysqli_query($connect, $sqlUser);
+    $userRow = mysqli_fetch_assoc($resultUser);
+}
+
 // Fetch the admin's data if available
 $adminRow = null;
 if (isset($_SESSION["adm"]) && $_SESSION["adm"] != null) {
@@ -64,15 +72,24 @@ mysqli_close($connect);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seniors</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('pictures/bg_3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 
-<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
-
+<body class="text-dark" style="height: 200vh">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <?php if ($adminRow) : ?>
-                    <img src="pictures/<?= $adminRow["picture"] ?>" alt="user pic" width="30" height="24">
+                <?php if ($userRow) : ?>
+                    <img src="pictures/<?= $userRow["picture"] ?>" alt="user pic" width="40" height="30">
+                    <?= $userRow["email"] ?>
+                <?php elseif ($adminRow) : ?>
+                    <img src="pictures/<?= $adminRow["picture"] ?>" alt="admin pic" width="40" height="30">
                     <?= $adminRow["email"] ?>
                 <?php else : ?>
                     Senior Page

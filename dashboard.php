@@ -89,7 +89,7 @@ mysqli_close($connect);
 
 </head>
 
-<body class="bg-success text-dark bg-opacity-50" style="height: 800vh">
+<body class="bg-success text-dark bg-opacity-75" style="height: 800vh">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -119,11 +119,11 @@ mysqli_close($connect);
 
 
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center my-4">
+        <div class="d-flex justify-content-start align-items-center my-4">
             <div>
                 <a class="btn btn-secondary btn-lg" href="register.php">Add a new user</a>
             </div>
-            <h2 class="text-center my-4 mx-4"><strong>Welcome <?= $row["first_name"] . " " . $row["last_name"] ?></strong></h2>
+            <h2 class="text-center my-4 mx-5 px-5"><strong>Welcome <?= $row["first_name"] . " " . $row["last_name"] ?></strong></h2>
         </div>
     </div>
 

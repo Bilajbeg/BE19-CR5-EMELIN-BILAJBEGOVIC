@@ -80,12 +80,11 @@ if (isset($_POST["update_user"])) {
                     </li>
                     <!-- Add more menu items below -->
                     <li class="nav-item">
-                        <a class="nav-link" href="senior.php" style="font-size: 20px;">Seniors</a>
+                        <a class="nav-link" href="register.php" style="font-size: 20px;">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="junior.php" style="font-size: 20px;">Juniors</a>
+                        <a class="nav-link" href="https://codefactory.wien/de/contact-de/" target="_blank" style="font-size: 20px;">Contact Help</a>
                     </li>
-
                 </ul>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 require_once "db_connect.php";
-require_once "upload.php";
+require_once "upload_user.php";
 
 session_start();
 
@@ -36,7 +36,7 @@ if (isset($_POST["sign-up"])) {
     $lname = cleanInput($_POST["lname"]);
     $email = cleanInput($_POST["email"]);
     $password = $_POST["password"];
-    $picture = upload($_FILES["picture"]);
+    $picture = upload_user($_FILES["picture"]);
 
     if (empty($fname)) {
         $error = true;
