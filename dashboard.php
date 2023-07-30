@@ -56,9 +56,9 @@ if (mysqli_num_rows($resultAnimals) > 0) {
                     <p class='card-text'>Age: {$animalRow["age"]}</p> 
                     <p>Size: <a href='sizes.php?size={$animalRow["size"]}'>{$animalRow["size"]}</a></p>
                     <p class='card-text'>Description: <br>{$animalRow["description"]}</p> 
-                    <a href='details.php?id={$animalRow["id"]}' class='btn btn-warning'>Details</a>
-                    <a href='update.php?id={$animalRow["id"]}' class='btn btn-success'>Edit</a>
-                    <a href='delete.php?id={$animalRow["id"]}' class='btn btn-danger'>Delete</a>
+                    <a href='details.php?id={$animalRow["id_pet"]}' class='btn btn-warning'>Details</a>
+                    <a href='update.php?id={$animalRow["id_pet"]}' class='btn btn-success'>Edit</a>
+                    <a href='delete.php?id={$animalRow["id_pet"]}' class='btn btn-danger'>Delete</a>
                 </div>
             </div>
         </div>";

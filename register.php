@@ -82,7 +82,7 @@ if (isset($_POST["sign-up"])) {
 
     if (!$error) {
         $password = hash("sha256", $password);
-        $sql = "INSERT INTO `users`( `first_name`, `last_name`, `password`, `email`, `picture`) VALUES ('$fname','$lname','$password', '$email','$picture[0]') ";
+        $sql = "INSERT INTO `users`(`first_name`, `last_name`, `password`, `email`, `picture`) VALUES ('$fname','$lname','$password', '$email','$picture[0]') ";
 
         if (mysqli_query($connect, $sql)) {
             echo   "<div class='alert alert-success'>

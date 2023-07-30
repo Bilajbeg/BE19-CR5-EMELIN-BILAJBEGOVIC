@@ -4,7 +4,7 @@ require_once "upload.php";
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM animal WHERE id = $id ";
+$sql = "SELECT * FROM animal WHERE id_pet = $id ";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 

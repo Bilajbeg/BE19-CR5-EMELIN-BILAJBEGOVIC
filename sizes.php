@@ -14,6 +14,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
+                <?= $row["email"] ?>
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 24px;">
                 <li class="nav-item">
@@ -69,7 +70,7 @@
           <p class='card-text'>Description:<br> {$row["description"]}</p>
           <p class='card-text'>Size: {$row["size"]}</p>
         </div>
-        <a href='details.php?id={$row["id"]}' class='btn btn-secondary mb-2' style='width: auto;'>Details</a>
+        <a href='details.php?id={$row["id_pet"]}' class='btn btn-secondary mb-2' style='width: auto;'>Details</a>
         <a href='home.php' class='btn btn-primary my-2 mb-3' style='width: auto;'>HOME</a>
 
         </div>";

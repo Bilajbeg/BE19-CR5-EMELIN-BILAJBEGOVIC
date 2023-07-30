@@ -18,7 +18,7 @@ $userRow = mysqli_fetch_assoc($userResult);
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM animal WHERE id = $id ";
+$sql = "SELECT * FROM animal WHERE id_pet = $id ";
 $result = mysqli_query($connect, $sql);
 
 $cards = "";

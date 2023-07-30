@@ -15,7 +15,7 @@ require_once "db_connect.php";
 function adoptPet($connect, $userId, $animalId)
 {
     // Update the status of the pet to 'Adopted' (status = 0)
-    $updateStatusSql = "UPDATE animal SET status = 0 WHERE id = $animalId";
+    $updateStatusSql = "UPDATE animal SET status = 0 WHERE id_pet = $animalId";
     mysqli_query($connect, $updateStatusSql);
 
     // Insert a new record in the pet_adoption table
@@ -64,10 +64,10 @@ if (mysqli_num_rows($resultProducts) > 0) {
                     <p class='card-text'>Status: {$adoptionStatus}</p>
                     <div class='d-flex justify-content-between'>
                         <form method='post'>
-                            <input type='hidden' name='animal_id' value='{$rowProduct["id"]}'>
+                            <input type='hidden' name='animal_id' value='{$rowProduct["id_pet"]}'>
                             <button type='submit' name='adopt' class='btn btn-primary'>{$buttonText}</button>
                         </form>
-                        <a href='details.php?id={$rowProduct["id"]}' class='btn btn-warning'>Details</a>
+                        <a href='details.php?id={$rowProduct["id_pet"]}' class='btn btn-warning'>Details</a>
                     </div>
                 </div>
             </div>
