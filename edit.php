@@ -72,7 +72,9 @@ mysqli_close($connect);
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="edit.php?id=<?= $row["id_pet"] ?>">Edit</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php?logout">Logout</a>
                 </li>

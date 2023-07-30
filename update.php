@@ -74,6 +74,12 @@ if (isset($_POST["update"])) {
                     <li class="nav-item">
                         <a class="nav-link" href="junior.php" style="font-size: 20px;">Juniors</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="edit.php?id=<?= $row["id_pet"] ?>" style="font-size: 20px;">Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php?logout" style="font-size: 20px;">Logout</a>
+                    </li>
 
                 </ul>
             </div>
@@ -84,7 +90,7 @@ if (isset($_POST["update"])) {
     <div class="container mt-5">
         <div class="card shadow-lg">
             <div class="card-header bg-primary text-white">
-                <h4 class="m-0">Update the animal data</h4>
+                <h4 class="m-0">Update the pet data</h4>
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data">
@@ -112,7 +118,10 @@ if (isset($_POST["update"])) {
                     </div>
                     <div class="mb-3">
                         <label for="vaccinated" class="form-label">Vaccinated</label>
-                        <input type="text" class="form-control" id="vaccinated" name="vaccinated" value="<?= $row["vaccinated"] ?>">
+                        <select class="form-control" id="vaccinated" name="vaccinated" value="<?= $row["vaccinated"] ?>">
+                            <option value="0">NO</option>
+                            <option value="1">YES</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="breed" class="form-label">Breed</label>

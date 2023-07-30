@@ -19,6 +19,3 @@ function upload_user($picture)
     }
     return [$pictureName, $message];
 };
-
-
-?>

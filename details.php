@@ -102,6 +102,13 @@ if (isset($_SESSION["user"]) || isset($_SESSION["adm"])) {
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sizes.php?size=big">Big pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sizes.php?size=small">Small pets</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="logout.php?logout">Logout</a>
                 </li>
             </ul>

@@ -92,7 +92,7 @@ mysqli_close($connect);
 <body class="bg-success text-dark bg-opacity-75" style="height: 800vh">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 20px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="https://emelin.codefactory.live/" target="_blank">
                 <img src="pictures/<?= $row["picture"] ?>" alt="user pic" width="30" height="24">
                 <?= $row["email"] ?>
             </a>
@@ -106,6 +106,7 @@ mysqli_close($connect);
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
                 </li>
+                <li class="nav-item">
                 <li class="nav-item">
                     <a class="nav-link" href="edit.php?id=<?= $row["id"] ?>">Edit</a>
                 </li>

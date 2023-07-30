@@ -76,7 +76,7 @@ if (isset($_POST["update_user"])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.php" style="font-size: 20px;">Home</a>
+                        <a class="nav-link active" aria-current="page" href="home.php" style="font-size: 20px;">Dashboard</a>
                     </li>
                     <!-- Add more menu items below -->
                     <li class="nav-item">
@@ -84,6 +84,9 @@ if (isset($_POST["update_user"])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://codefactory.wien/de/contact-de/" target="_blank" style="font-size: 20px;">Contact Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php?logout" style="font-size: 20px;">Logout</a>
                     </li>
                 </ul>
             </div>

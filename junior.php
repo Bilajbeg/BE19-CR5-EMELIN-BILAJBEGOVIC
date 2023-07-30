@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["user"])) {
-    // Redirect to the login page or handle the situation when the user is not logged in
+// Check if neither "user" nor "adm" session is set, redirect to login
+if (!isset($_SESSION["user"]) && !isset($_SESSION["adm"])) {
     header("Location: login.php");
-    exit; // Make sure to exit after redirection
+    exit;
 }
 
 require_once "db_connect.php";
@@ -104,7 +104,13 @@ mysqli_close($connect);
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sizes.php?size=big">Big pets</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sizes.php?size=small">Small pets</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php?logout">Logout</a>
                 </li>
