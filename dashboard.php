@@ -107,6 +107,11 @@ mysqli_close($connect);
                     <a class="nav-link active" aria-current="page" href="junior.php">Juniors</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sizes.php?size=big">Big</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sizes.php?size=small">Small</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="edit.php?id=<?= $row["id"] ?>">Edit</a>
                 </li>

@@ -58,7 +58,6 @@ if (isset($_POST["update"])) {
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,18 +68,14 @@ if (isset($_POST["update"])) {
                     </li>
                     <!-- Add more menu items below -->
                     <li class="nav-item">
-                        <a class="nav-link" href="senior.php" style="font-size: 20px;">Seniors</a>
+                        <a class="nav-link" href="register.php" style="font-size: 20px;">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="junior.php" style="font-size: 20px;">Juniors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="edit.php?id=<?= $row["id_pet"] ?>" style="font-size: 20px;">Edit</a>
+                        <a class="nav-link" href="https://codefactory.wien/de/contact-de/" target="_blank" style="font-size: 20px;">Contact Help</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php?logout" style="font-size: 20px;">Logout</a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -141,7 +136,7 @@ if (isset($_POST["update"])) {
 
 
                     <button type="submit" name="update" class="btn btn-success btn-lg">Update</button>
-                    <a href='index.php' class='btn btn-primary btn-lg' style='width: auto;'>HOME PAGE</a>
+                    <a href='index.php' class='btn btn-primary btn-lg' style='width: auto;'>Dashboard</a>
                 </form>
             </div>
         </div>
