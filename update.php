@@ -20,9 +20,9 @@ if (isset($_POST["update"])) {
     $status = $_POST["status"];
 
     if ($_FILES["image"]["error"] === 4) {
-        $sql = "UPDATE animal SET name='$name', location='$location', description='$description', size='$size', age='$age', vaccinated='$vaccinated', breed='$breed', status='$status' WHERE id=$id";
+        $sql = "UPDATE animal SET name='$name', location='$location', description='$description', size='$size', age='$age', vaccinated='$vaccinated', breed='$breed', status='$status' WHERE id_pet=$id";
     } else {
-        $sql = "UPDATE animal SET name='$name', image='$image[0]', location='$location', description='$description', size='$size', age='$age', vaccinated='$vaccinated', breed='$breed', status='$status' WHERE id=$id";
+        $sql = "UPDATE animal SET name='$name', image='$image[0]', location='$location', description='$description', size='$size', age='$age', vaccinated='$vaccinated', breed='$breed', status='$status' WHERE id_pet=$id";
     }
 
     if (mysqli_query($connect, $sql)) {
